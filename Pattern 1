@@ -11,7 +11,7 @@
  {
  int i,j,n;
  clrscr(); 
- printf(“\n Enter number”);
+ printf(“\n Enter number of rows”);
  scanf(“%d”,&n);
  for(i=1;i<=n;i++)
  {
