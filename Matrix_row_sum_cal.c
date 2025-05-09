@@ -1,15 +1,15 @@
+//to calculate summation of each row and column from user-input matrix
 #include<stdio.h>
 #include<conio.h>
-
 void main()
 {
-    int a[10][10], b[10][10], c[10][10], d[10][10], e[10][10], i, j, k, m, n, p, q;
-    
+    int a[10][10], i, j, m, n, rowsum, colsum;
+
     clrscr();
-    printf("Enter the dimensions of the 1st matrix\n");
+    printf("Enter the dimensions of the matrix (rows columns):\n");
     scanf("%d%d", &m, &n);
-    
-    printf("Enter the matrix elements\n");
+
+    printf("Enter the matrix elements:\n");
     for(i=0; i<m; i++)
     {
         for(j=0; j<n; j++)
@@ -17,8 +17,8 @@ void main()
             scanf("%d", &a[i][j]);
         }
     }
-    
-    printf("The first matrix is:\n");
+
+    printf("\nThe matrix is:\n");
     for(i=0; i<m; i++)
     {
         for(j=0; j<n; j++)
@@ -27,93 +27,28 @@ void main()
         }
         printf("\n");
     }
-    
-    printf("Enter the dimensions of the 2nd matrix\n");
-    scanf("%d%d", &p, &q);
-    
-    printf("Enter the matrix elements\n");
-    for(i=0; i<p; i++)
+
+    printf("\nRow sums:\n");
+    for(i=0; i<m; i++)
     {
-        for(j=0; j<q; j++)
+        rowsum = 0;
+        for(j=0; j<n; j++)
         {
-            scanf("%d", &b[i][j]);
+            rowsum = rowsum + a[i][j];
         }
+        printf("The sum of row %d is %d\n", i+1, rowsum);
     }
-    
-    printf("The second matrix is:\n");
-    for(i=0; i<p; i++)
+
+    printf("\nColumn sums:\n");
+    for(j=0; j<n; j++) 
     {
-        for(j=0; j<q; j++)
+        colsum = 0;
+        for(i=0; i<m; i++)  
         {
-            printf("%d\t", b[i][j]);  
+            colsum = colsum + a[i][j];
         }
-        printf("\n");
+        printf("The sum of column %d is %d\n", j+1, colsum);
     }
-    
-    if(m==p && n==q)
-    {
-        for(i=0; i<m; i++)
-        {
-            for(j=0; j<n; j++)
-            {
-                c[i][j] = a[i][j] + b[i][j];  
-                d[i][j] = a[i][j] - b[i][j];  
-            }
-        }
-        
-        printf("Addition of the matrices is \n");
-        for(i=0; i<m; i++)
-        {
-            for(j=0; j<n; j++)
-            {
-                printf("%d\t", c[i][j]);  
-            }
-            printf("\n");
-        }
-        
-        printf("Subtraction of the matrices is \n");
-        for(i=0; i<m; i++)
-        {
-            for(j=0; j<n; j++)
-            {
-                printf("%d\t", d[i][j]); 
-            }
-            printf("\n");
-        }
-    }
-    else
-    {
-        printf("Matrices cannot be added or subtracted \n");
-    }
-    
-    if(n==p)
-    {
-        printf("Multiplication of the matrices is \n");
-        for(i=0; i<m; i++)
-        {
-            for(j=0; j<q; j++)
-            {
-                e[i][j] = 0;
-                for(k=0; k<n; k++)
-                {
-                    e[i][j] = e[i][j] + (a[i][k] * b[k][j]);
-                }
-            }
-        }
-        
-        for(i=0; i<m; i++)
-        {
-            for(j=0; j<q; j++)
-            {
-                printf("%d\t", e[i][j]);  
-            }
-            printf("\n");
-        }
-    }
-    else
-    {
-        printf("Matrices cannot be multiplied \n");
-    }
-    
+
     getch();
 }
